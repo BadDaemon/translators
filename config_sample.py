@@ -1,0 +1,4 @@
+config = {
+    'useragent': '',
+    'cookies': ''
+}
