@@ -24,9 +24,9 @@ python3 crowdin.py
 
 A file named `proofreaders.json` is generated. This can then be used to generate valid yaml for the wiki:
 
-__Note:__ Add `--manager` if you are a translation manager so the script can read the full list including managers:
+__Note:__ Add `--include-managers` or (`-m`) if you are a translation manager so the script can read the full list including managers:
 ```
-python3 crowdin.py --manager
+python3 crowdin.py --include-managers
 ```
 
 ### Generate yaml for the wiki:
