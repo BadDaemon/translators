@@ -51,15 +51,21 @@ class Member:
         self.params = {'user_id': uid, 'project_id': 237414}
         self.cookies = cookies
         self.ua = ua
-        self.uri = 'http://translate.lineageos.org/project_actions/translator_info'
-
-    def get(self):
-        headers = {
+        self.headers = {
                 'referer': 'http://translate.lineageos.org/project/lineageos/translators',
                 'x-csrf-token': self.cookies['csrf_token'],
                 'user-agent': self.ua,
                 'x-requested-with': 'XMLHttpRequest',
         }
-        r = requests.get(self.uri, cookies=self.cookies, params=self.params, headers=headers)
+
+    def get(self):
+        uri = 'http://translate.lineageos.org/project_actions/translator_info'
+        r = requests.get(uri, cookies=self.cookies, params=self.params, headers=self.headers)
         #print(json.dumps(r.json()))
         return r.json()['data']
+
+    def remove(self):
+        uri = 'https://crowdin.com/project_actions/remove_user_from_project'
+        r = requests.get(uri, cookies=self.cookies, params=self.params, headers=self.headers)
+        #print(json.dumps(r.json()))
+        return r.json()
